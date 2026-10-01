@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Almicookies — Bakehouse & Artisan Treats</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --burgundy-bg: #4A0012;
+            --burgundy-card: #33000C;
+            --burgundy-accent: #800020;
+            --gold-accent: #E2B056;
+            --text-light: #FFF8F0;
+            --text-muted: #D1B3B9;
+            --white: #FFFFFF;
+            --shadow: 0 12px 28px rgba(0, 0, 0, 0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--burgundy-bg);
+            color: var(--text-light);
+            line-height: 1.6;
+            padding-bottom: 80px;
+        }
+
+        h1, h2, h3, .brand {
+            font-family: 'Fraunces', serif;
+        }
+
+        .container {
+            width: 88%;
+            max-width: 1080px;
+            margin: 0 auto;
+        }
+
+        header {
+            padding: 20px 0;
+            background-color: var(--burgundy-bg);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .brand {
+            font-size: 1.9rem;
+            font-weight: 700;
+            color: var(--gold-accent);
+            letter-spacing: 0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 28px;
+            list-style: none;
+            font-size: 0.95rem;
+            font-weight: 600;
+        }
+
+        .nav-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--gold-accent);
+        }
+
+        .hero {
+            padding: 50px 0 30px;
+        }
+
+        .hero-layout {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .hero-content h1 {
+            font-size: 3rem;
+            color: var(--text-light);
+            line-height: 1.15;
+            margin-bottom: 20px;
+        }
+
+        .hero-content p {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            margin-bottom: 28px;
+        }
+
+        .btn-main {
+            display: inline-block;
+            background-color: var(--gold-accent);
+            color: var(--burgundy-bg);
+            padding: 14px 32px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.95rem;
+            transition: all 0.2s ease;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn-main:hover {
+            background-color: #F0C46B;
+            transform: translateY(-2px);
+        }
+
+        .hero-frame {
+            width: 100%;
+            height: 360px;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            border: 2px solid rgba(226, 176, 86, 0.3);
+        }
+
+        .hero-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .features {
+            padding: 40px 0;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        .feature-card {
+            background-color: var(--burgundy-card);
+            padding: 24px;
+            border-radius: 16px;
+            text-align: center;
+            border: 1px solid rgba(226, 176, 86, 0.2);
+            box-shadow: var(--shadow);
+        }
+
+        .feature-icon {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .feature-card h3 {
+            color: var(--gold-accent);
+            margin-bottom: 8px;
+            font-size: 1.15rem;
+        }
+
+        .feature-card p {
+            font-size: 0.88rem;
+            color: var(--text-muted);
+        }
+
+        .catalog {
+            padding: 50px 0;
+        }
+
+        .catalog-title {
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .catalog-title h2 {
+            font-size: 2.2rem;
+            color: var(--text-light);
+        }
+
+        .catalog-title p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .grid-products {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 28px;
+        }
+
+        .card {
+            background-color: var(--burgundy-card);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            display: flex;
+            flex-direction: column;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .card-img-wrap {
+            width: 100%;
+            height: 220px;
+            overflow: hidden;
+        }
+
+        .card-img-wrap img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .card:hover .card-img-wrap img {
+            transform: scale(1.05);
+        }
+
+        .card-body {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+            justify-content: space-between;
+        }
+
+        .item-name {
+            font-size: 1.25rem;
+            color: var(--text-light);
+            margin-bottom: 6px;
+        }
+
+        .item-desc {
+            font-size: 0.88rem;
+            color: var(--text-muted);
+            margin-bottom: 18px;
+        }
+
+        .card-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 14px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .price-text {
+            font-weight: 700;
+            color: var(--gold-accent);
+            font-size: 1.1rem;
+        }
+
+        .btn-add {
+            background-color: var(--gold-accent);
+            color: var(--burgundy-bg);
+            border: none;
+            padding: 10px 18px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .btn-add:hover {
+            background-color: #F0C46B;
+        }
+
+        .cart-bar {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            max-width: 600px;
+            background-color: var(--gold-accent);
+            color: var(--burgundy-bg);
+            padding: 14px 24px;
+            border-radius: 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+            z-index: 1000;
+        }
+
+        .cart-info {
+            font-size: 0.95rem;
+            font-weight: 600;
+        }
+
+        .btn-checkout {
+            background-color: #25D366;
+            color: var(--white);
+            padding: 8px 18px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.85rem;
+        }
+
+        footer {
+            background-color: var(--burgundy-card);
+            color: var(--text-muted);
+            padding: 40px 0;
+            text-align: center;
+            font-size: 0.9rem;
+            margin-top: 60px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        @media (max-width: 768px) {
+            .hero-layout { grid-template-columns: 1fr; text-align: center; }
+            .hero-frame { height: 260px; }
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container nav-container">
+            <div class="brand">ALMICOOKIES</div>
+            <ul class="nav-links">
+                <li><a href="#keunggulan">Keunggulan</a></li>
+                <li><a href="#menu">Menu & Harga</a></li>
+                <li><a href="#lokasi">Lokasi</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container hero-layout">
+            <div class="hero-content">
+                <h1>Cookies Chewy & Treats Artisan Fresh</h1>
+                <p>Dipanggang segar setiap hari menggunakan mentega premium pilihan dan cokelat murni tanpa bahan pengawet.</p>
+                <a href="#menu" class="btn-main">Pesan Sekarang</a>
+            </div>
+            <div class="hero-frame">
+                <!-- BANNER HERO COOKIES -->
+                <img src="https://images.unsplash.com/photo-1499636136210-6f4ee915583e?q=80&w=800&auto=format&fit=crop" alt="Cookies Banner">
+            </div>
+        </div>
+    </section>
+
+    <section class="container features" id="keunggulan">
+        <div class="catalog-title">
+            <h2>Mengapa Pilih Almicookies?</h2>
+            <p>Kualitas dan rasa terbaik untuk setiap gigitan manis Anda.</p>
+        </div>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">🧈</div>
+                <h3>Bahan Premium</h3>
+                <p>Menggunakan 100% mentega murni dan cokelat kualitas tinggi.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🔥</div>
+                <h3>Freshly Baked</h3>
+                <p>Dipanggang langsung setiap pagi agar tekstur tetap lumer & renyah.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🚫</div>
+                <h3>Tanpa Pengawet</h3>
+                <p>Aman dikonsumsi oleh keluarga karena dibuat secara alami.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📦</div>
+                <h3>Kemasan Aman</h3>
+                <p>Dikemas rapat & rapi, cocok untuk hadiah atau pengiriman luar kota.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="container catalog" id="menu">
+        <div class="catalog-title">
+            <h2>Daftar Menu & Harga</h2>
+            <p>Klik tombol "+ Tambah" untuk memasukkan item ke keranjang belanja Anda.</p>
+        </div>
+
+        <div class="grid-products">
+            <!-- 1. CLASSIC CHOCO CHIP -->
+            <div class="card">
+                <div class="card-img-wrap">
+                    <img src="gambar1.jpeg" alt="Classic Choco Chip">
+                </div>
+                <div class="card-body">
+                    <div>
+                        <h3 class="item-name">Classic Choco Chip</h3>
+                        <p class="item-desc">Adonan gurih berpadu lelehan Belgian dark chocolate melimpah.</p>
+                    </div>
+                    <div class="card-footer">
+                        <span class="price-text">Rp 15.000</span>
+                        <button class="btn-add" onclick="addToCart('Classic Choco Chip', 15000)">+ Tambah</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2. RED VELVET CHEESE COOKIES -->
+            <div class="card">
+                <div class="card-img-wrap">
+                    <img src="gambar2.jpeg" alt="Red Velvet Cheese">
+                </div>
+                <div class="card-body">
+                    <div>
+                        <h3 class="item-name">Red Velvet Cheese</h3>
+                        <p class="item-desc">Cookies red velvet harum dengan isian cream cheese gurih lumer.</p>
+                    </div>
+                    <div class="card-footer">
+                        <span class="price-text">Rp 18.000</span>
+                        <button class="btn-add" onclick="addToCart('Red Velvet Cheese', 18000)">+ Tambah</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3. VANILLA GLAZE DONUT -->
+            <div class="card">
+                <div class="card-img-wrap">
+                    <img src="gambar3.jpeg" alt="Vanilla Glaze Donut">
+                </div>
+                <div class="card-body">
+                    <div>
+                        <h3 class="item-name">Vanilla Glaze Donut</h3>
+                        <p class="item-desc">Donat kentang lembut dilapisi glaze vanila manis pas.</p>
+                    </div>
+                    <div class="card-footer">
+                        <span class="price-text">Rp 10.000</span>
+                        <button class="btn-add" onclick="addToCart('Vanilla Glaze Donut', 10000)">+ Tambah</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 4. CHOCO MESES DONUT -->
+            <div class="card">
+                <div class="card-img-wrap">
+                    <img src="gambar4.jpeg" alt="Choco Meses Donut">
+                </div>
+                <div class="card-body">
+                    <div>
+                        <h3 class="item-name">Choco Meses Premium</h3>
+                        <p class="item-desc">Donat kentang empuk dengan buttercream & meses melimpah.</p>
+                    </div>
+                    <div class="card-footer">
+                        <span class="price-text">Rp 12.000</span>
+                        <button class="btn-add" onclick="addToCart('Choco Meses Premium', 12000)">+ Tambah</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="cart-bar" id="cartBar" style="display: none;">
+        <div class="cart-info">
+            <span id="cartCount">0</span> Item | Total: <strong id="cartTotal">Rp 0</strong>
+        </div>
+        <a href="#" id="waLink" target="_blank" class="btn-checkout">Pesan via WA 📱</a>
+    </div>
+
+    <footer>
+        <div class="container" id="lokasi">
+            <p style="font-family: 'Fraunces', serif; font-size: 1.4rem; color: var(--gold-accent); margin-bottom: 8px;">ALMICOOKIES</p>
+            <p>📍 Jl. Psr 7 Sederhana Gg. Seroja 5</p>
+            <p style="margin-top: 12px; opacity: 0.6; font-size: 0.8rem;">&copy; 2026 Almicookies. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        let cart = [];
+        let total = 0;
+
+        function addToCart(itemName, price) {
+            cart.push({ name: itemName, price: price });
+            total += price;
+            updateCartUI();
+        }
+
+        function updateCartUI() {
+            const cartBar = document.getElementById('cartBar');
+            const cartCount = document.getElementById('cartCount');
+            const cartTotal = document.getElementById('cartTotal');
+            const waLink = document.getElementById('waLink');
+
+            if (cart.length > 0) {
+                cartBar.style.display = 'flex';
+                cartCount.innerText = cart.length;
+                cartTotal.innerText = 'Rp ' + total.toLocaleString('id-ID');
+
+                let message = "Halo Almicookies, saya mau pesan:\n";
+                cart.forEach((item, index) => {
+                    message += `${index + 1}. ${item.name} - Rp ${item.price.toLocaleString('id-ID')}\n`;
+                });
+                message += `\n*Total Harga: Rp ${total.toLocaleString('id-ID')}*`;
+
+                const phoneNumber = "6281234567890"; 
+                waLink.href = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+            }
+        }
+    </script>
+</body>
+</html>
